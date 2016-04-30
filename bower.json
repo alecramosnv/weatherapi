@@ -1,0 +1,17 @@
+{
+  "name": "weatherapi",
+  "homepage": "https://github.com/alecramosnv/weatherapi",
+  "authors": [
+    "Alec Ramos <alec1034780@icloud.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
