@@ -16,10 +16,23 @@ $(document).ready(function(){
 	});
 
 	function again (event) {
-
 		$('#results').hide();
 		$('#reset').hide();
 		$('#go').show();
+	}
+
+	function formatTime (time) {
+		var date = new Date(time*1000);
+		var hours = date.getHours();
+		var minutes = "0" + date.getMinutes();
+		var seconds = "0" + date.getSeconds();
+		return hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+	}
+
+	function degToCompass(num) {
+		var val = Math.floor((num / 22.5) + 0.5);
+		var arr = ["North ", "North North East ", "North East ", "East North East ", "East ", "East South East ", "South East ", "South South East ", "South ", "South South West ", "South West ", "West South West ", "West ", "West North West ", "North West ", "North North West "];
+		return arr[(val % 16)];
 	}
 
 	function weather (event) {
@@ -36,15 +49,15 @@ $(document).ready(function(){
 				$('#temp_min').text(data.main.temp_min + ' °F');
 				$('#humidity').text(data.main.humidity + '%');
 				$('#pressure').text(data.main.pressure + ' HPA');
-				$('#clouds').text(data.clouds.all + '% Cover');
-				$('#wind').text(data.wind.speed + '  mph');
-				$('#weather').text(data.weather.main);
+				$('#clouds').text(data.weather[0].description);
+				$('#wind').text(data.wind.speed + '  mph from the ' + degToCompass(data.wind.deg));
+				$('#weather').text(data.weather[0].main);
 				var conditions = $('#weather').text();
-				if (conditions = null) {
+				if (conditions == null) {
 					$('#conditions').hide();
 				}
-				$('#sunrise').text(data.sys.sunrise);
-				$('#sunset').text(data.sys.sunset);
+				$('#sunrise').text(formatTime(data.sys.sunrise));
+				$('#sunset').text(formatTime(data.sys.sunset));
 				$('#coord').text('Latitude: ' + data.coord.lat + ', Longitude: ' + data.coord.lon);
 				$('#coord').attr('href', 'https://www.google.com/maps/@' + data.coord.lat + ',' + data.coord.lon + ',15z');
 				$('#go').hide();
