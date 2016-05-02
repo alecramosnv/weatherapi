@@ -6,8 +6,6 @@ $(document).ready(function(){
 	$('#results').hide();
 	$('#reset').hide();
 
-	var key = prompt("Please enter your API Key");
-
 	$('#code').on("keypress", function (e) {
 		if (e.which === 13) {
 			weather();
@@ -35,12 +33,41 @@ $(document).ready(function(){
 		return arr[(val % 16)];
 	}
 
+	function setCookie(cname, cvalue, exdays) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+	var key = getCookie("key");
+	if (key == "") {
+		key = prompt("Please enter your key:", "");
+		if (key != "" && key != null) {
+			setCookie("key", key, 365);
+		}
+	}
+
 	function weather (event) {
 
 		if (key != null) {
 			var code = $('#code').val();
 			$.getJSON('http://api.openweathermap.org/data/2.5/weather?zip=' + code + ',us&appid=' + key + '&units=imperial', function(data){
-				console.log(data);
 				$('#results').show();
 				$('.location').text(data.name);
 				$('#country').text(', ' + data.sys.country);
