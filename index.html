@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Current Weather</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
 	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
@@ -39,8 +40,8 @@
 
 		<h1 class="text-xs-center">Weather in <span class="location"></span><span id="country"></span></h1>
 
-		<br>
-		<h3 class="text-xs-center" id="conditions">It is <span id="weather"></span></h3
+		<center><img id="icon" src=""></center>
+
 		<div class="row">
 			<table class="table table-striped table-bordered text-xs-center">
 				<tbody>
@@ -69,24 +70,40 @@
 						<td id="pressure">n/a HPA</td>
 					</tr>
 					<tr>
+						<td>Air Quality</td>
+						<td id="air"></td>
+					</tr>
+					<tr>
 						<td>Humidity</td>
 						<td id="humidity">n/a %</td>
 					</tr>
 					<tr>
-						<td>Geo Coords</td>
+						<td>Geographic Coordinates</td>
 						<td><a target="_blank" href="" id="coord">n/a</a></td>
 					</tr>
 					<tr>
-						<td>Sunrise</td>
+						<td>Sunrise Time</td>
 						<td id="sunrise"></td>
 					</tr>
 					<tr>
-						<td>Sunset</td>
+						<td>Sunset Time</td>
 						<td id="sunset"></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+
+		<h3 class="text-xs-center">Children</h3>
+		<p class="text-xs-center" id="children"></p>
+		<h3 class="text-xs-center">Health</h3>
+		<p class="text-xs-center" id="health"></p>
+		<h3 class="text-xs-center">Inside</h3>
+		<p class="text-xs-center" id="inside"></p>
+		<h3 class="text-xs-center">Outside</h3>
+		<p class="text-xs-center" id="outside"></p>
+		<h3 class="text-xs-center">Sport</h3>
+		<p class="text-xs-center" id="sport"></p>
+
 	</div>
 
 </body>
