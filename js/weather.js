@@ -63,6 +63,8 @@ $(document).ready(function(){
 		}
 	}
 
+	$('#code').focus();
+
 	function weather (event) {
 		forecast();
 		currentWeather();
