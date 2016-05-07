@@ -1,112 +1,114 @@
 <!DOCTYPE html>
-<html lang="">
+<html ng-app="root">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Current Weather</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
 	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/weather.js"></script>
+	<script type="text/javascript" src="js/controllers/MainController.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-
-	<br>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-2"></div>
-			<div class="col-xs-8">
-				<div class="row">
-					<div class="col-xs-7">
-						<input type="text" id="code" placeholder="Enter a zip code" class="form-control">
-					</div>
-					<div class="col-xs-5">
-						<button class="btn btn-success btn-block" id="go">Go!</button>
-						<button class="btn btn-warning btn-block" id="reset">Reset</button>
+	<div ng-controller="index">
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2"></div>
+				<div class="col-xs-8">
+					<div class="row">
+						<div class="col-xs-7">
+							<input type="text" id="code" placeholder="Enter a zip code" class="form-control">
+						</div>
+						<div class="col-xs-5">
+							<button class="btn btn-success btn-block" id="go">Go!</button>
+							<button class="btn btn-warning btn-block" id="reset">Reset</button>
+						</div>
 					</div>
 				</div>
+				<div class="col-xs-2"></div>
 			</div>
-			<div class="col-xs-2"></div>
 		</div>
-	</div>
-
-	<hr>
-
-	<div id="results">
-
-		<h1 class="text-xs-center">Weather in <span class="location"></span><span id="country"></span></h1>
-
-		<center><img id="icon" src=""></center>
-
-		<div class="row">
-			<table class="table table-striped table-bordered text-xs-center">
-				<tbody>
-					<tr>
-						<td>Current Temperature</td>
-						<td id="temp">n/a °F</td>
-					</tr>
-					<tr>
-						<td>Max Temperature</td>
-						<td id="temp_max">n/a °F</td>
-					</tr>
-					<tr>
-						<td>Min Temperature</td>
-						<td id="temp_min">n/a °F</td>
-					</tr>
-					<tr>
-						<td>Wind</td>
-						<td id="wind">n/a</td>
-					</tr>
-					<tr>
-						<td>Cloudiness</td>
-						<td id="clouds">n/a</td>
-					</tr>
-					<tr>
-						<td>Pressure<br></td>
-						<td id="pressure">n/a HPA</td>
-					</tr>
-					<tr>
-						<td>Air Quality</td>
-						<td id="air"></td>
-					</tr>
-					<tr>
-						<td>Humidity</td>
-						<td id="humidity">n/a %</td>
-					</tr>
-					<tr>
-						<td>Geographic Coordinates</td>
-						<td><a target="_blank" href="" id="coord">n/a</a></td>
-					</tr>
-					<tr>
-						<td>Sunrise Time</td>
-						<td id="sunrise"></td>
-					</tr>
-					<tr>
-						<td>Sunset Time</td>
-						<td id="sunset"></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<h3 class="text-xs-center">Children</h3>
-		<p class="text-xs-center" id="children"></p>
-		<h3 class="text-xs-center">Health</h3>
-		<p class="text-xs-center" id="health"></p>
-		<h3 class="text-xs-center">Inside</h3>
-		<p class="text-xs-center" id="inside"></p>
-		<h3 class="text-xs-center">Outside</h3>
-		<p class="text-xs-center" id="outside"></p>
-		<h3 class="text-xs-center">Sport</h3>
-		<p class="text-xs-center" id="sport"></p>
-
+		
 		<hr>
+		
+		<div id="results">
+
+			<h1 class="text-xs-center">Weather in <span class="location"></span><span id="country"></span></h1>
+
+			<center><img id="icon" src=""></center>
+
+			<div class="row">
+				<table class="table table-striped table-bordered text-xs-center">
+					<tbody>
+						<tr>
+							<td>Current Temperature</td>
+							<td id="temp" ng-controller="index">{{temp}}</td>
+						</tr>
+						<tr>
+							<td>Max Temperature</td>
+							<td id="temp_max"ng-controller="index">{{temp_max}}</td>
+						</tr>
+						<tr>
+							<td>Min Temperature</td>
+							<td id="temp_min"ng-controller="index">{{temp_min}}</td>
+						</tr>
+						<tr>
+							<td>Wind</td>
+							<td id="wind"ng-controller="index">{{wind}}</td>
+						</tr>
+						<tr>
+							<td>Cloudiness</td>
+							<td id="clouds"ng-controller="index">{{clouds}}</td>
+						</tr>
+						<tr>
+							<td>Pressure<br></td>
+							<td id="pressure"ng-controller="index">{{pressure}}</td>
+						</tr>
+						<tr>
+							<td>Air Quality</td>
+							<td id="air"ng-controller="index">{{air}}</td>
+						</tr>
+						<tr>
+							<td>Humidity</td>
+							<td id="humidity"ng-controller="index">{{humidity}}</td>
+						</tr>
+						<tr>
+							<td>Geographic Coordinates</td>
+							<td><a target="_blank" href="" id="coord"ng-controller="index">{{coord}}</a></td>
+						</tr>
+						<tr>
+							<td>Sunrise Time</td>
+							<td id="sunrise"ng-controller="index">{{sunrise}}</td>
+						</tr>
+						<tr>
+							<td>Sunset Time</td>
+							<td id="sunset"ng-controller="index">{{sunset}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<h3 class="text-xs-center">Children</h3>
+			<p class="text-xs-center" id="children"ng-controller="index">{{children}}</p>
+			<h3 class="text-xs-center">Health</h3>
+			<p class="text-xs-center" id="health"ng-controller="index">{{health}}</p>
+			<h3 class="text-xs-center">Inside</h3>
+			<p class="text-xs-center" id="inside"ng-controller="index">{{inside}}</p>
+			<h3 class="text-xs-center">Outside</h3>
+			<p class="text-xs-center" id="outside"ng-controller="index">{{outside}}</p>
+			<h3 class="text-xs-center">Sport</h3>
+			<p class="text-xs-center" id="sport"ng-controller="index">{{sport}}</p>
+
+			<hr>
+
+		</div>
 
 	</div>
-
 </body>
 </html>
