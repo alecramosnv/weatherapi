@@ -134,7 +134,4 @@ $(document).ready(function(){
 		})
 	}
 
-	// first key: 01671288806d7d8df40c5f847b77021c
-	// second key: 07dd79e6867f4949b83c77b59fedfe81
-
 });
